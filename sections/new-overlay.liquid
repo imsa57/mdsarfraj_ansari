@@ -1,0 +1,108 @@
+<div class="section-{{ section.id }}">
+  <div class="rel">
+    <div>
+      <div class="overlay">
+        <div class="content_wrapper">
+          <div class="text_content">
+            {% if section.settings.heading != blank %}
+              <h1>{{ section.settings.heading }}</h1>
+            {% endif %}
+            <div class="pragraph">
+              {{ section.settings.paragraph }}
+            </div>
+          </div>
+          {% if section.settings.button_text != blank %}
+            {% if section.settings.button_url != blank %}
+              <a href="{{ section.settings.button_url }}" class="new_button_overlay new_button button_1">
+                {{- section.settings.button_text }}
+                <span>
+                  <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+                  </svg></span>
+              </a>
+            {% else %}
+              <button class="new_button_overlay new_button button_1">
+                {{ section.settings.button_text }}
+                <span>
+                  <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+                  </svg>
+                </span>
+              </button>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+      {% if section.settings.hero_image != blank %}
+        <div class="hero_image_box">
+          {% assign mobile_image = section.settings.hero_image_mobile | default: section.settings.hero_image %}
+          <picture>
+            <source media="(max-width:750px)" srcset="{{ mobile_image | image_url  }}">
+            <img src="{{ section.settings.hero_image |image_url }}" alt="Hero_image" width="100%" height="auto">
+          </picture>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+    {% if section.settings.below_text != blank %}
+      <div class="below_image_text">
+        {{ section.settings.below_text }}
+      </div>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "New overlay",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Desktop image",
+      "info": "1400X700 recomended"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Mobile image",
+      "info": "700X400 recomended"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading text",
+      "default":"The Gift Guide"
+    },
+    {
+     "type": "richtext",
+      "id": "paragraph",
+      "label": "Content",
+      "default":"<p>Discover Joy: Your Ultimate Holiday Gift Destination.</p>"
+    },
+    {
+     "type": "text",
+      "id": "below_text",
+      "label": "Below image text",
+      "default":"SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default":"Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {"name":"New overlay"}
+  ]
+}
+{% endschema %}

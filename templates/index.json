@@ -1,75 +1,94 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "header2_NCjejU": {
+      "type": "header2",
+      "settings": {
+        "title": "TISSO VISON",
+        "paragrph": "Find the ideal gift for your loved ones.",
+        "button": "CHOOSE GIFT",
+        "url": ""
+      }
+    },
+    "new_overlay_RAeDew": {
+      "type": "new-overlay",
+      "settings": {
+        "hero_image": "shopify:\/\/shop_images\/Frame.jpg",
+        "hero_image_mobile": "shopify:\/\/shop_images\/Frame_1.jpg",
+        "heading": "The Gift Guide",
+        "paragraph": "<p>Discover Joy: Your Ultimate Holiday Gift Destination.<\/p>",
+        "below_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL",
+        "button_text": "SHOP NOW",
+        "button_url": ""
+      }
+    },
+    "new_product_galary_qzxTqU": {
+      "type": "new-product-galary",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "product_gallary_NVKmnc": {
+          "type": "product_gallary",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "g_product": "chequered-red-shirt",
+            "top_location": 50,
+            "left_location": 50
           }
         },
-        "button": {
-          "type": "buttons",
+        "product_gallary_HYLHa6": {
+          "type": "product_gallary",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "g_product": "blue-silk-tuxedo",
+            "top_location": 50,
+            "left_location": 81
+          }
+        },
+        "product_gallary_PVJrAR": {
+          "type": "product_gallary",
+          "settings": {
+            "g_product": "black-leather-bag",
+            "top_location": 63,
+            "left_location": 50
+          }
+        },
+        "product_gallary_aeAGNf": {
+          "type": "product_gallary",
+          "settings": {
+            "g_product": "ocean-blue-shirt",
+            "top_location": 38,
+            "left_location": 38
+          }
+        },
+        "product_gallary_CU4JrR": {
+          "type": "product_gallary",
+          "settings": {
+            "g_product": "classic-varsity-top",
+            "top_location": 31,
+            "left_location": 22
+          }
+        },
+        "product_gallary_66wgpN": {
+          "type": "product_gallary",
+          "settings": {
+            "g_product": "classic-leather-jacket",
+            "top_location": 50,
+            "left_location": 42
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "product_gallary_NVKmnc",
+        "product_gallary_HYLHa6",
+        "product_gallary_PVJrAR",
+        "product_gallary_aeAGNf",
+        "product_gallary_CU4JrR",
+        "product_gallary_66wgpN"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "heading": "Tisso vison in the wild"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "header2_NCjejU",
+    "new_overlay_RAeDew",
+    "new_product_galary_qzxTqU"
   ]
 }

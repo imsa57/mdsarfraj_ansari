@@ -1,0 +1,117 @@
+<div class="header_wrapper">
+  
+<div class="gutter header-2">
+  <div class="desktop">
+    {% if section.settings.title != blank %}
+      <div class="title_logo">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.paragrph != blank %}
+      <div class="paragraph">{{ section.settings.paragrph }}</div>
+    {% endif %}
+    <div class="button_box">
+      {% if section.settings.button != blank %}
+        {% if section.settings.url != blank %}
+          <a href="{{ section.settings.url }}" class="new_button button_2">
+            {{- section.settings.button }}
+            <span>
+              <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+              </svg>
+            </span>
+          </a>
+        {% else %}
+          <button class="new_button button_2">
+            {{ section.settings.button }}
+            <span>
+              <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+              </svg>
+            </span>
+          </button>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="mobile">
+    <div>
+      <span class="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 20 13" fill="none">
+          <path d="M1 6.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 11.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 15 15" fill="none">
+          <path d="M1 13.9997L13.7279 1.27177" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.00031L13.7279 13.7282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      {% if section.settings.title != blank %}
+        <div class="title_logo">{{ section.settings.title }}</div>
+      {% endif %}
+    </div>
+  </div>      
+</div>
+    <div class="moble_extra_content">
+          {% if section.settings.paragrph != blank %}
+      <div class="paragraph">{{ section.settings.paragrph }}</div>
+    {% endif %}
+    <div class="button_box">
+      {% if section.settings.button != blank %}
+        {% if section.settings.url != blank %}
+          <a href="{{ section.settings.url }}" class="new_button button_2">
+            {{- section.settings.button }}
+            <span>
+              <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+              </svg>
+            </span>
+          </a>
+        {% else %}
+          <button class="new_button button_2">
+            {{ section.settings.button }}
+            <span>
+              <svg width="27" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+              </svg>
+            </span>
+          </button>
+        {% endif %}
+      {% endif %}
+    </div>
+    </div>        
+</div>
+{% schema %}
+{
+  "name": "Header 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "paragrph",
+      "label": "Small text",
+      "default":"Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button text",
+      "default":"CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {"name":"Header 2"}
+  ]
+}
+{% endschema %}

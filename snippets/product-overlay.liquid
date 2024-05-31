@@ -1,0 +1,89 @@
+
+
+
+<div class="product_overlay_container " data-overlayProduct="{{ product.id }}">
+  <product-card-overlay data-softproductid="{{ all_products["dark-winter-jacket"].selected_or_first_available_variant.id }}">
+    <span class="close_icon">X</span>
+    <div>
+      <div class="image_title_wp">
+        <img src="{{ product.featured_image | image_url  }}" alt="{{ product.title }}" height="auto">
+        <div class="title_des">
+          <p class="pc_title">{{ product.title }}</p>
+          <p class="pc_price">{{ product.price | money_with_currency }}</p>
+          <div class="pc_des">{{ product.description | truncatewords: 16 }}</div>
+        </div>
+      </div>
+      <div class="product_variant">
+        {% for option in product.options_with_values %}
+          {% if option.name == 'Color' %}
+            {% assign color_option = option %}
+          {% endif %}
+          {% if option.name == 'Size' %}
+            {% assign size_option = option %}
+          {% endif %}
+        {% endfor %}
+        <div class="color_option_wrapper">
+          <p class="option_name">{{ color_option.name }}</p>
+          <div class="option_wrapper rel">
+            {% for color in color_option.values %}
+              <div
+                class="color_box"
+              >
+                <span style=" background:{{ color }}"></span>
+                <label for="{{ color |append:forloop.index }}">
+                  <input type="radio" id="{{ color |append:forloop.index }}" name="{{ color_option.name }}">
+                  <span>{{ color }}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="size_option_wrapper">
+          <p class="option_name">{{ size_option.name }}</p>
+          <div class="size_wrapper">
+            <div class="size_div">
+              <span>Choose your size</span>
+              <span class="size_svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+                  <path d="M2 2L8 8L14 2" stroke="black" stroke-width="1.5" stroke-linecap="square"/>
+                </svg>
+              </span>
+            </div>
+            <div class="size_opt_wrapper">
+              {% for size in size_option.values %}
+                <label for="{{ size |append:forloop.index }}">
+                  <input
+                    type="radio"
+                    value="{{size }}"
+                    id="{{ size |append:forloop.index }}"
+                    name="{{ size_option.name }}"
+                  >
+                  <span>{{ size }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <!-- <product-form
+          class="product-form"
+          data-section-id="{{ section.id }}"
+        > -->
+          <!-- {% form 'product', product %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant }}"> -->
+            <button type="button" class="addToCart_button">
+              <span>ADD TO CART</span>
+              <span>
+                <svg width="33" height="12" viewBox="0 0 27 12" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5.25C0.585786 5.25 0.25 5.58579 0.25 6C0.25 6.41421 0.585786 6.75 1 6.75L1 5.25ZM26.5303 6.53033C26.8232 6.23743 26.8232 5.76256 26.5303 5.46967L21.7574 0.696697C21.4645 0.403804 20.9896 0.403804 20.6967 0.696697C20.4038 0.989591 20.4038 1.46446 20.6967 1.75736L24.9393 6L20.6967 10.2426C20.4038 10.5355 20.4038 11.0104 20.6967 11.3033C20.9896 11.5962 21.4645 11.5962 21.7574 11.3033L26.5303 6.53033ZM1 6.75L26 6.75L26 5.25L1 5.25L1 6.75Z"/>
+                </svg>
+              </span>
+            </button>
+          <!-- {% endform %}
+        </product-form> -->
+      </div>
+    </div>
+    <script>
+      {{ product.variants | json }}
+    </script>
+  </product-card-overlay>
+</div>
