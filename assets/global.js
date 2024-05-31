@@ -1674,8 +1674,8 @@ class ProductOverlay extends HTMLElement {
     this.variant = {};
     this.variantData = JSON.parse(this.querySelector("script").textContent);
     this.actButton = this.querySelector(".addToCart_button");
-    this.actButton.addEventListener('click',this.addToCartFunc.bind(this))
-     // if (document.querySelector('cart-drawer')) this.actButton.setAttribute('aria-haspopup', 'dialog');
+    this.actButton.addEventListener("click", this.addToCartFunc.bind(this));
+    // if (document.querySelector('cart-drawer')) this.actButton.setAttribute('aria-haspopup', 'dialog');
     this.actButton.disabled = true;
     this.querySelector(".close_icon").addEventListener(
       "click",
@@ -1720,27 +1720,29 @@ class ProductOverlay extends HTMLElement {
   }
   enableAddToCart() {
     if (this.size && this.color) {
-   
       this.actButton.disabled = false;
     }
   }
   addToCartFunc() {
-
-      const variantTitle = JSON.stringify([this.size, this.color]);
-      const selected_variantID = this.variantData.find(
-        (variant) => JSON.stringify(variant.options) == variantTitle
-      ).id;
+    // adding product in cart
+    const variantTitle = JSON.stringify([this.size, this.color]);
+    const selected_variantID = this.variantData.find(
+      (variant) => JSON.stringify(variant.options) == variantTitle
+    ).id;
 
     let allVariant;
-      if(this.color.toLowerCase() == 'black' && this.size.toLowerCase() == 'm'){
-        allVariant = [{ id: selected_variantID,quantity: 1,},{id:this.dataset.softproductid,quantity:1}]
-      }else{
-        allVariant = [{ id: selected_variantID,quantity: 1,}]
-      }
-    console.log(this.color.toLowerCase(),this.size.toLowerCase())
+    if (this.color.toLowerCase() == "black" && this.size.toLowerCase() == "m") {
+      allVariant = [
+        { id: selected_variantID, quantity: 1 },
+        { id: this.dataset.softproductid, quantity: 1 },
+      ];
+    } else {
+      allVariant = [{ id: selected_variantID, quantity: 1 }];
+    }
+    console.log(this.color.toLowerCase(), this.size.toLowerCase());
     let formData = {
       items: allVariant,
-      sections: "cart-drawer,cart-icon-bubble"
+      sections: "cart-drawer,cart-icon-bubble",
     };
     fetch(window.Shopify.routes.root + "cart/add.js", {
       method: "POST",
@@ -1751,15 +1753,16 @@ class ProductOverlay extends HTMLElement {
     })
       .then((response) => {
         return response.json();
-      }).then(res=>{
-        console.log(res)
-        let cartDrawer = document.querySelector("cart-drawer")
-         const html = new DOMParser().parseFromString(res.sections['cart-drawer'], 'text/html');
-        console.log("hiii",html)
-        document.querySelector('cart-drawer-items').innerHTML = html.querySelector('cart-drawer-items').innerHTML
-        document.querySelector('.drawer__footer').innerHTML = html.querySelector('.drawer__footer').innerHTML
-        cartDrawer.classList.add('animate', 'active');
-        console.log("jiii")
+      })
+      .then((res) => {
+        let cartDrawer = document.querySelector("cart-drawer");
+        const html = new DOMParser().parseFromString(
+          res.sections["cart-drawer"],
+          "text/html"
+        );
+        cartDrawer.classList.remove("is-empty");
+        cartDrawer.renderContents.call(cartDrawer, res);
+        cartDrawer.classList.add("animate", "active");
       })
       .catch((error) => {
         console.error("Error:", error);
