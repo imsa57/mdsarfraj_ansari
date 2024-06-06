@@ -1668,6 +1668,7 @@ class ProductOverlayButton extends HTMLElement {
   }
 }
 customElements.define("open-overlay", ProductOverlayButton);
+
 class ProductOverlay extends HTMLElement {
   constructor() {
     super();
@@ -1675,7 +1676,6 @@ class ProductOverlay extends HTMLElement {
     this.variantData = JSON.parse(this.querySelector("script").textContent);
     this.actButton = this.querySelector(".addToCart_button");
     this.actButton.addEventListener("click", this.addToCartFunc.bind(this));
-    // if (document.querySelector('cart-drawer')) this.actButton.setAttribute('aria-haspopup', 'dialog');
     this.actButton.disabled = true;
     this.querySelector(".close_icon").addEventListener(
       "click",
@@ -1690,11 +1690,11 @@ class ProductOverlay extends HTMLElement {
     this.option_wrapper
       .querySelectorAll("label")
       .forEach((size) =>
-        size.addEventListener("click", () => this.onSize(size))
+        size.addEventListener("click", this.onSize.bind(this, size))
       );
     this.color_boxes = this.querySelectorAll(".color_box");
     this.color_boxes.forEach((color) =>
-      color.addEventListener("click", () => this.onColor(this, color))
+      color.addEventListener("click", this.onColor.bind(this, color))
     );
   }
   open() {
@@ -1712,7 +1712,7 @@ class ProductOverlay extends HTMLElement {
     this.close.call(this.option_wrapper);
     this.enableAddToCart.call(this);
   }
-  onColor(obj, colorElement) {
+  onColor(colorElement) {
     this.color_boxes.forEach((color) => color.classList.remove("selected"));
     colorElement.classList.add("selected");
     this.color = colorElement.querySelector("label span").textContent;
@@ -1724,7 +1724,6 @@ class ProductOverlay extends HTMLElement {
     }
   }
   addToCartFunc() {
-    // adding product in cart
     const variantTitle = JSON.stringify([this.size, this.color]);
     const selected_variantID = this.variantData.find(
       (variant) => JSON.stringify(variant.options) == variantTitle
@@ -1739,7 +1738,6 @@ class ProductOverlay extends HTMLElement {
     } else {
       allVariant = [{ id: selected_variantID, quantity: 1 }];
     }
-    console.log(this.color.toLowerCase(), this.size.toLowerCase());
     let formData = {
       items: allVariant,
       sections: "cart-drawer,cart-icon-bubble",
@@ -1756,10 +1754,10 @@ class ProductOverlay extends HTMLElement {
       })
       .then((res) => {
         let cartDrawer = document.querySelector("cart-drawer");
-        const html = new DOMParser().parseFromString(
-          res.sections["cart-drawer"],
-          "text/html"
-        );
+        // const html = new DOMParser().parseFromString(
+        //   res.sections["cart-drawer"],
+        //   "text/html"
+        // );
         cartDrawer.classList.remove("is-empty");
         cartDrawer.renderContents.call(cartDrawer, res);
         cartDrawer.classList.add("animate", "active");
