@@ -1655,6 +1655,8 @@ class AccountIcon extends HTMLElement {
 
 customElements.define("account-icon", AccountIcon);
 
+////////////////// MY CODE
+
 class ProductOverlayButton extends HTMLElement {
   constructor() {
     super();
@@ -1704,6 +1706,7 @@ class ProductOverlay extends HTMLElement {
     this.classList.remove("open");
   }
   onSize(sizeElement) {
+    // selection size variant
     let sizeText = sizeElement.querySelector("span").textContent;
     this.size = sizeText;
     let size_box = this.size_text.querySelector("span");
@@ -1713,12 +1716,14 @@ class ProductOverlay extends HTMLElement {
     this.enableAddToCart.call(this);
   }
   onColor(colorElement) {
+    // selecting the color variant
     this.color_boxes.forEach((color) => color.classList.remove("selected"));
     colorElement.classList.add("selected");
     this.color = colorElement.querySelector("label span").textContent;
     this.enableAddToCart.call(this);
   }
   enableAddToCart() {
+    // Enabeling add to cart onselection of both variant option
     if (this.size && this.color) {
       this.actButton.disabled = false;
     }
@@ -1728,7 +1733,7 @@ class ProductOverlay extends HTMLElement {
     const selected_variantID = this.variantData.find(
       (variant) => JSON.stringify(variant.options) == variantTitle
     ).id;
-
+    // add variant based on condition
     let allVariant;
     if (this.color.toLowerCase() == "black" && this.size.toLowerCase() == "m") {
       allVariant = [
@@ -1755,6 +1760,7 @@ class ProductOverlay extends HTMLElement {
       .then((res) => {
         let cartDrawer = document.querySelector("cart-drawer");
         cartDrawer.classList.remove("is-empty");
+        // sending sections response for rendering
         cartDrawer.renderContents.call(cartDrawer, res);
         cartDrawer.classList.add("animate", "active");
       })
