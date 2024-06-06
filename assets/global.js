@@ -1754,10 +1754,6 @@ class ProductOverlay extends HTMLElement {
       })
       .then((res) => {
         let cartDrawer = document.querySelector("cart-drawer");
-        // const html = new DOMParser().parseFromString(
-        //   res.sections["cart-drawer"],
-        //   "text/html"
-        // );
         cartDrawer.classList.remove("is-empty");
         cartDrawer.renderContents.call(cartDrawer, res);
         cartDrawer.classList.add("animate", "active");
